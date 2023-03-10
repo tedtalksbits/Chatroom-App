@@ -1,0 +1,34 @@
+<script src="/socket.io/socket.io.js"></script>
+
+
+{{{pageTitle}}}
+<h1>Chatroom</h1>
+<div id="messages"></div>
+<div >
+    <input type="text" id="message-input" />
+    <button id="sendMessage" type="submit">Send</button>
+</div>
+<script>
+    var socket = io();
+
+    // send a message to the server
+    function sendMessage() {
+        console.log('Sending message...');
+        var message = document.getElementById('message-input').value;
+        socket.emit('message', message);
+        document.getElementById('message-input').value = '';
+    }
+
+    // receive a message from the server
+    socket.on('message', function(message) {
+        console.log('Received message:', message);
+        var messages = document.getElementById('messages');
+        var messageElement = document.createElement('div');
+        messageElement.innerText = message;
+        messages.appendChild(messageElement);
+    });
+
+    // send a message when the form is submitted
+    const sendMessageBtn = document.getElementById('sendMessage');
+    sendMessageBtn.addEventListener('click', sendMessage);
+</script>
