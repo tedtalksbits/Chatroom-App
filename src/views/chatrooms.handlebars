@@ -1,0 +1,28 @@
+<div class="wrapper p-md">
+
+    <div class="flex align-center justify-between">
+        <a href="/chatrooms/edit">Edit</a>
+        <a href="/chat/new">New</a>
+    </div>
+
+    <h2 class="font-xxxl">{{pageTitle}}</h2>
+
+    <input type="search" name="search" id="search">
+
+    <div id="rooms" class="my-md">
+        {{#each chatrooms}}
+            <div class="room">
+                <a href="/chatroom?id={{this._id}}" class="flex align-center gap-md border-top pb-md pt-sm">
+                    <img src="{{this.img}}" style="
+                        object-fit: cover;
+                        border-radius: 50%;
+                        height: 48px;
+                        width: 48px;
+                        background-color: #e7e7e7;
+                    ">
+                    <h3>{{this.name}}</h3>
+                </a>
+            </div>
+        {{/each}}
+    </div>
+</div>

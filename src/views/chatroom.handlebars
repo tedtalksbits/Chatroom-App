@@ -1,20 +1,23 @@
 <script src="/socket.io/socket.io.js"></script>
 
+<div class="wrapper p-md">
 
-{{{pageTitle}}}
-<h1>Chatroom</h1>
-<div id="messages"></div>
-<div >
-    <input type="text" id="message-input" />
-    <button id="sendMessage" type="submit">Send</button>
+    <h2>{{{pageTitle}}}/{{chatroom.name}}</h2>
+    <img src="{{chatroom.img}}" alt="">
+    <div id="messages"></div>
+    <div >
+        <input type="text" id="message-input" />
+        <button id="sendMessage" type="submit">Send</button>
+    </div>
 </div>
+
 <script>
-    var socket = io();
+    let socket = io();
 
     // send a message to the server
     function sendMessage() {
         console.log('Sending message...');
-        var message = document.getElementById('message-input').value;
+        let message = document.getElementById('message-input').value;
         socket.emit('message', message);
         document.getElementById('message-input').value = '';
     }
@@ -22,8 +25,8 @@
     // receive a message from the server
     socket.on('message', function(message) {
         console.log('Received message:', message);
-        var messages = document.getElementById('messages');
-        var messageElement = document.createElement('div');
+        let messages = document.getElementById('messages');
+        let messageElement = document.createElement('div');
         messageElement.innerText = message;
         messages.appendChild(messageElement);
     });

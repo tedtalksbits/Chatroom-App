@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: 'Figtree', sans-serif;
+}
+
+:root {
+    --primary: #00aeff;
+    --primary-light: #00beff;
+    --primary-lighter: #00ceff;
+    --primary-lightest: #00deff;
+    --primary-dark: #00a0ff;
+    --primary-darker: #0090ff;
+    --primary-darkest: #0080ff;
+    --primary-transparent-100: rgba(0, 174, 255, 0.08);
+    --primary-transparent-200: rgba(0, 174, 255, 0.16);
+    --primary-transparent-300: rgba(0, 174, 255, 0.24);
+    --primary-transparent-400: rgba(0, 174, 255, 0.32);
+    --primary-transparent-500: rgba(0, 174, 255, 0.4);
+    --primary-transparent-600: rgba(0, 174, 255, 0.48);
+    --primary-transparent-700: rgba(0, 174, 255, 0.56);
+    --primary-transparent-800: rgba(0, 174, 255, 0.64);
+    --primary-transparent-900: rgba(0, 174, 255, 0.72);
+    --secondary: #ff00e1;
+    --secondary-light: #ff00f1;
+    --secondary-lighter: #ff00ff;
+    --secondary-lightest: #ef00ff;
+    --secondary-dark: #ff00d1;
+    --secondary-darker: #ff00c1;
+    --secondary-darkest: #ff00b1;
+    --secondary-transparent-100: rgba(255, 0, 225, 0.08);
+    --secondary-transparent-200: rgba(255, 0, 225, 0.16);
+    --secondary-transparent-300: rgba(255, 0, 225, 0.24);
+    --secondary-transparent-400: rgba(255, 0, 225, 0.32);
+    --secondary-transparent-500: rgba(255, 0, 225, 0.4);
+    --secondary-transparent-600: rgba(255, 0, 225, 0.48);
+    --secondary-transparent-700: rgba(255, 0, 225, 0.56);
+    --secondary-transparent-800: rgba(255, 0, 225, 0.64);
+    --secondary-transparent-900: rgba(255, 0, 225, 0.72);
+    --tertiary: #ffae00;
+    --tertiary-light: #ffbe00;
+    --tertiary-lighter: #ffce00;
+    --tertiary-lightest: #ffde00;
+    --tertiary-dark: #ffa000;
+    --tertiary-darker: #ff9000;
+    --tertiary-darkest: #ff8000;
+    --tertiary-transparent-100: rgba(255, 174, 0, 0.08);
+    --tertiary-transparent-200: rgba(255, 174, 0, 0.16);
+    --tertiary-transparent-300: rgba(255, 174, 0, 0.24);
+    --tertiary-transparent-400: rgba(255, 174, 0, 0.32);
+    --tertiary-transparent-500: rgba(255, 174, 0, 0.4);
+    --tertiary-transparent-600: rgba(255, 174, 0, 0.48);
+    --tertiary-transparent-700: rgba(255, 174, 0, 0.56);
+    --tertiary-transparent-800: rgba(255, 174, 0, 0.64);
+    --tertiary-transparent-900: rgba(255, 174, 0, 0.72);
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="url"],
+input[type="search"],
+input[type="color"],
+textarea,
+select {
+    font-family: 'Figtree', sans-serif;
+    font-size: 1.2rem;
+}

@@ -6,6 +6,8 @@ import chatroomRoutes from './routes/chatroom.js';
 import authRoutes from './routes/auth.js';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
+import path from 'path';
+import { fileURLToPath } from 'url';
 const app = express();
 dotenv.config();
 
@@ -20,7 +22,7 @@ app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
 // set up static files
-app.use(express.static('public'));
+app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
