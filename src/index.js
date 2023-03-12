@@ -41,12 +41,23 @@ const io = new Server(httpServer, {
 });
 io.on('connection', (socket) => {
     console.log('a user connected');
+    let id;
+    socket.on('join', (room) => {
+        socket.join(room);
+        id = room;
+        console.log('joined room: ' + room);
+        console.log('id', id);
+    });
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
     socket.on('message', (msg) => {
         console.log('message: ' + msg);
-        io.emit('message', msg);
+        console.log('socket id: ' + socket.rooms.values().next().value);
+        console.log('socket id: ' + socket.id);
+
+        console.log(socket.rooms);
+        io.sockets.in(id).emit('message', msg);
     });
 });
 

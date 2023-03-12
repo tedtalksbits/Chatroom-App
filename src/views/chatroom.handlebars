@@ -39,7 +39,8 @@
 </div>
 
 <script>
-    let socket = io();
+    let socket = io('/?id=' + '{{chatroom._id}}');
+    socket.emit('join', '{{chatroom._id}}');
 
     // send a message to the server
     function sendMessage() {
