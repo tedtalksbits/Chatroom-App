@@ -148,3 +148,32 @@ select {
         --border-color: hsl(225, 8%, 20%);
     }
 }
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    transition: all 0.2s ease-in-out;
+    font-size: 14px;
+    font-family: inherit;
+    appearance: none;
+    height: 36px;
+    min-height: 36px;
+    text-align: left;
+    padding-inline: var(--spacing-sm);
+    transition: border-color 100ms ease;
+    background-color: var(--surface-alt);
+    color: var(--txt);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+}
