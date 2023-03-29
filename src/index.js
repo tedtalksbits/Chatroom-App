@@ -47,17 +47,18 @@ io.on('connection', (socket) => {
         id = room;
         console.log('joined room: ' + room);
         console.log('id', id);
+        socket.emit('joined', room);
     });
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
-    socket.on('message', (msg) => {
+    socket.on('send-message', (msg) => {
         console.log('message: ' + msg);
         console.log('socket id: ' + socket.rooms.values().next().value);
         console.log('socket id: ' + socket.id);
 
         console.log(socket.rooms);
-        io.sockets.in(id).emit('message', msg);
+        socket.to(id).emit('send-message', msg);
     });
 });
 

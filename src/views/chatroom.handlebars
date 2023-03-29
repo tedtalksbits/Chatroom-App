@@ -3,14 +3,9 @@
         overflow-y: auto;
         background-color: white;
         padding: 10px;
-    }
-
-    #messages div {
-        margin-bottom: 10px;
-        padding: .5rem;
-        border-radius: 5px;
-        background-color: #e7e7e7;
-        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
     #messages>* {
@@ -20,6 +15,37 @@
 
     #sendMessage {
         flex: 1;
+    }
+
+    .time {
+        font-size: .75rem;
+        color: var(--black-alpha-500);
+        font-weight: 500;
+    }
+
+    .message.own-message p {
+        background-color: var(--primary);
+        color: white;
+
+    }
+
+    .message p {
+        padding: .5rem;
+        border-radius: 15px;
+        background-color: #e7e7e7;
+        /*max-width: 50%;*/
+    }
+
+    .message.own-message .time {}
+
+    .message.own-message .time.own-time {}
+
+    .message {
+        align-self: flex-start;
+    }
+
+    .message.own-message {
+        align-self: flex-end;
     }
 </style>
 <script src="/socket.io/socket.io.js"></script>
@@ -42,37 +68,52 @@
     let socket = io('/?id=' + '{{chatroom._id}}');
     socket.emit('join', '{{chatroom._id}}');
 
-    // send a message to the server
-    function sendMessage() {
-        console.log('Sending message...');
-        const messageInput = document.getElementById('message-input');
-        if (!messageInput.value) return;
-        let message = messageInput.value;
-        socket.emit('message', message);
-        messageInput.value = '';
-    }
+    const messages = document.getElementById('messages');
+    const messageInput = document.getElementById('message-input');
+    const sendMessageBtn = document.getElementById('sendMessage');
 
-    // receive a message from the server
-    socket.on('message', function (message) {
-        console.log('Received message:', message);
-        let messages = document.getElementById('messages');
-        let messageContainer = document.createElement('div');
+    function createMessage(isOwnMessage, message) {
+        let messageBubble = document.createElement('div');
         let messageElement = document.createElement('p');
-        messageElement.innerText = message;
-        messageContainer.appendChild(messageElement);
-        messageContainer.classList.add('message');
-        messages.appendChild(messageContainer);
+        let timeElement = document.createElement('span');
 
+        timeElement.classList.add('time');
+        messageBubble.classList.add('message');
+
+        timeElement.innerText = getCurrentTime();
+        messageElement.innerText = message;
+
+        messageBubble.appendChild(timeElement);
+        messageBubble.appendChild(messageElement);
+
+        if (isOwnMessage) {
+            messageBubble.classList.add('own-message');
+            timeElement.classList.add('own-time');
+        }
+
+        messages.appendChild(messageBubble);
         // scroll to the bottom of the messages
         messages.scrollTop = messages.scrollHeight;
+    }
 
-    });
+    function getCurrentTime() {
+        let date = new Date();
 
-    // send a message when the form is submitted
-    const sendMessageBtn = document.getElementById('sendMessage');
+        return date.toLocaleTimeString({ hour: '2-digit', minute: '2-digit' });
+    }
+
     sendMessageBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        sendMessage()
+        if (!messageInput.value) return;
+        createMessage(true, messageInput.value);
+        socket.emit('send-message', messageInput.value);
+        messageInput.value = '';
+        //messages.scrollTop = messages.scrollHeight;
+    });
+
+
+    socket.on('send-message', function (message) {
+        createMessage(false, message);
     });
 
 
