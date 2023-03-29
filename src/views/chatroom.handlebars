@@ -1,12 +1,13 @@
 <style>
     #messages {
         overflow-y: auto;
-        background-color: white;
         padding: 10px;
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
+
+    #message-input {}
 
     #messages>* {
         display: block;
@@ -19,7 +20,7 @@
 
     .time {
         font-size: .75rem;
-        color: var(--black-alpha-500);
+        color: var(--txt-alt);
         font-weight: 500;
     }
 
@@ -32,7 +33,8 @@
     .message p {
         padding: .5rem;
         border-radius: 15px;
-        background-color: #e7e7e7;
+        background-color: var(--txt);
+        color: var(--surface);
         /*max-width: 50%;*/
     }
 
@@ -58,8 +60,8 @@
         </div>
         <div id="messages" class="mb-md h-100"></div>
         <form class="flex gap-md mt-auto">
-            <input id="message-input" type="text" autofocus>
-            <button id="sendMessage" type="submit" class="flex-1">Send</button>
+            <input id="message-input" class="p-lg rounded-lg" type="text" autofocus>
+            <button id="sendMessage" type="submit" class="flex-1 rounded-lg">Send</button>
         </form>
     </div>
 </div>

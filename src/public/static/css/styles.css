@@ -75,6 +75,32 @@ body {
     --tertiary-transparent-800: rgba(255, 174, 0, 0.64);
     --tertiary-transparent-900: rgba(255, 174, 0, 0.72);
 
+    /* theme */
+
+    --surface: hsl(210, 17%, 98%);
+    --surface-alt: hsl(0, 0%, 100%);
+    --surface-alt2: hsl(0deg 0% 92%);
+
+    --surface-transparent-100: hsla(210, 17%, 98%, 0.08);
+    --surface-transparent-200: hsla(210, 17%, 98%, 0.16);
+    --surface-transparent-300: hsla(210, 17%, 98%, 0.24);
+    --surface-transparent-400: hsla(210, 17%, 98%, 0.32);
+    --surface-transparent-500: hsla(210, 17%, 98%, 0.4);
+    --surface-transparent-600: hsla(210, 17%, 98%, 0.48);
+    --surface-transparent-700: hsla(210, 17%, 98%, 0.56);
+    --surface-transparent-800: hsla(210, 17%, 98%, 0.64);
+    --surface-transparent-900: hsla(210, 17%, 98%, 0.72);
+
+    --txt: hsl(0, 0%, 9%);
+    --txt-alt: hsla(0, 0%, 9%, .75);
+    --txt-alt2: hsla(0, 0%, 9%, .55);
+    --txt-alt3: hsla(0, 0%, 9%, .35);
+    --txt-alt4: hsla(0, 0%, 9%, .15);
+
+    --border-color: hsl(225, 8%, 90%);
+
+
+
 }
 
 input[type="text"],
@@ -95,4 +121,30 @@ textarea,
 select {
     font-family: 'Figtree', sans-serif;
     font-size: 1.2rem;
+}
+
+/* user prefer dark mode */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --surface: hsl(210, 17%, 8%);
+        --surface-alt: hsl(0, 0%, 10%);
+        --surface-alt2: hsl(0deg 0% 12%);
+        --surface-transparent-100: hsla(210, 17%, 8%, 0.08);
+        --surface-transparent-200: hsla(210, 17%, 8%, 0.16);
+        --surface-transparent-300: hsla(210, 17%, 8%, 0.24);
+        --surface-transparent-400: hsla(210, 17%, 8%, 0.32);
+        --surface-transparent-500: hsla(210, 17%, 8%, 0.4);
+        --surface-transparent-600: hsla(210, 17%, 8%, 0.48);
+        --surface-transparent-700: hsla(210, 17%, 8%, 0.56);
+        --surface-transparent-800: hsla(210, 17%, 8%, 0.64);
+        --surface-transparent-900: hsla(210, 17%, 8%, 0.72);
+        --txt: hsl(0, 0%, 100%);
+        --txt-alt: hsla(0, 0%, 100%, .75);
+        --txt-alt2: hsla(0, 0%, 100%, .55);
+        --txt-alt3: hsla(0, 0%, 100%, .35);
+        --txt-alt4: hsla(0, 0%, 100%, .15);
+
+        --border-color: hsl(225, 8%, 20%);
+    }
 }
